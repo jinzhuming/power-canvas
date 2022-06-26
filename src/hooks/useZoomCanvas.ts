@@ -1,10 +1,10 @@
 import { isInteger, throttle } from 'lodash';
 import { Matrix } from '../utils/matrix';
-import { Ref, toRefs } from 'vue';
+import { Ref } from 'vue';
 import { useCanvasOffsetStore, useCanvasZoomStore } from '../stores/dashboard';
 
 /*
- * must be called in onMounted
+ * 必须在 mounted 内调用，否则拿不到 dom
  * */
 export const useZoomCanvas = (dashboardRef: Ref<HTMLDivElement | null>) => {
   const dom = dashboardRef.value;
@@ -16,7 +16,7 @@ export const useZoomCanvas = (dashboardRef: Ref<HTMLDivElement | null>) => {
 
   const onWheel = throttle((e: WheelEvent) => {
     const zoomSpeed = 2;
-    // must press ctrl or meta
+    // 不处理按下 ctrl 和 cmd 的情况
     if (!e.ctrlKey && !e.metaKey) return;
 
     /*

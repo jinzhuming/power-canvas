@@ -10,17 +10,15 @@ const CANVAS_OFFSET_HEIGHT = 2000;
 export const useMoveCanvas = (dashboardRef: Ref<HTMLDivElement | null>) => {
   const canvasOffsetStore = useCanvasOffsetStore();
   const { x, y } = toRefs(canvasOffsetStore);
-
   const dom = dashboardRef.value;
 
   if (!dom) return;
   let prevOffset: ICanvasOffset | null = null;
   let timer: NodeJS.Timeout | null = null;
 
-  // move canvas event
   watchEffect((onCleanup) => {
     const onWheel = (e: WheelEvent) => {
-      // If press meta or ctrl, not handle it
+      // 不处理按下 ctrl 和 cmd 的情况
       if (e.ctrlKey || e.metaKey) return;
 
       if (prevOffset === null) {

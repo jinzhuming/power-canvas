@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "types": [
-      "pinia-plugin-persist","node"
+      "pinia-plugin-persist", "node"
     ],
     "baseUrl": ".",
     "target": "esnext",
