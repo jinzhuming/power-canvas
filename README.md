@@ -1,6 +1,7 @@
 # Vue 3 + TypeScript + Vite + Pinia
 
 项目起源于之前的一个公司低代码数据可视化项目， 后来打算看一下 vue3 的时候发现没什么适合的练手项目，所以就把之前的低代码项目使用 `vue3` 改写一个低配版本出来
+![](docs/images/sample_diagram.gif)
 
 整体使用 `ts` + `vue3` + `vue-router` + `pinia`
 
