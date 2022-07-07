@@ -1,10 +1,15 @@
 <script setup lang="ts">
 // 画布本身
 import { computed, toRefs } from 'vue';
-import { useCanvasOffsetStore, useCanvasZoomStore } from '../stores/dashboard';
+import {
+  useCanvasID,
+  useCanvasOffsetStore,
+  useCanvasZoomStore
+} from '../stores/dashboard';
 import Panels from './Panels.vue';
 import SelectedBox from './SelectedBox.vue';
 
+const canvasID = useCanvasID();
 const canvasOffsetStore = useCanvasOffsetStore();
 const canvasZoomStore = useCanvasZoomStore();
 const { x, y } = toRefs(canvasOffsetStore);
@@ -16,9 +21,9 @@ const canvasStyle = computed(() => {
 </script>
 
 <template>
-  <div id="canvas" :style="canvasStyle">
-    <Panels />
+  <div :id="canvasID" :style="canvasStyle">
     <SelectedBox />
+    <Panels />
   </div>
 </template>
 

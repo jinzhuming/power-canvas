@@ -4,6 +4,9 @@ export interface ICanvasOffset {
   x: number;
   y: number;
 }
+
+export const useCanvasID = () => 'canvas';
+export const useDashboardID = () => 'dashboard';
 export const useCanvasOffsetStore = defineStore('canvasOffset', {
   state: () => {
     return { x: 0, y: 0 };

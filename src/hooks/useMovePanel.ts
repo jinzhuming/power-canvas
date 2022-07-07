@@ -58,6 +58,7 @@ export const useMovePanel = (panelID: string, panelDom: HTMLDivElement) => {
   };
   const onMouseUp = () => {
     window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mouseup', onMouseUp);
   };
 
   const onMouseDown = (e: MouseEvent) => {
@@ -71,6 +72,7 @@ export const useMovePanel = (panelID: string, panelDom: HTMLDivElement) => {
     initMousePosition.x = e.x;
     initMousePosition.y = e.y;
   };
+
   panelDom.addEventListener('mousedown', onMouseDown);
 
   onUnmounted(() => {

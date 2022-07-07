@@ -34,7 +34,7 @@ const boxStyle = computed(() => {
 <style>
 .selected-box {
   position: absolute;
-  z-index: 2;
+  z-index: 9999;
   background-color: transparent;
   pointer-events: none;
   /* 这里利用pointer-events none 做一个点击穿透的效果，防止覆盖在别的元素的时候无法触发元素上的事件 */

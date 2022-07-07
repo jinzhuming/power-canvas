@@ -18,6 +18,9 @@ export const usePanelsStore = defineStore('panels', {
     enabled: true
   },
   actions: {
+    clear() {
+      this.panels = [];
+    },
     set(panels: IPanel[]) {
       this.panels = panels;
     }
