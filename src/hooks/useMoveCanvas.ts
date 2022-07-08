@@ -1,8 +1,8 @@
 import { toRefs, watchEffect, Ref } from 'vue';
 import { ICanvasOffset, useCanvasOffsetStore } from '../stores/dashboard';
 // max limit
-const CANVAS_OFFSET_WIDTH = 2000;
-const CANVAS_OFFSET_HEIGHT = 2000;
+export const CANVAS_OFFSET_WIDTH = 2000;
+export const CANVAS_OFFSET_HEIGHT = 2000;
 
 /*
  * must be called in onMounted

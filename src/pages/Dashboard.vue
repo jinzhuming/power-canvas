@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Canvas from '../components/Canvas.vue';
+import Thumb from '../components/thumb/index.vue';
 import { useMoveCanvas } from '../hooks/useMoveCanvas';
 import { onMounted, ref } from 'vue';
 import { useZoomCanvas } from '../hooks/useZoomCanvas';
@@ -45,6 +46,7 @@ const panelClear = () => {
     </div>
     <Canvas />
     <MultipleSelectPanels />
+    <Thumb />
   </div>
 </template>
 
