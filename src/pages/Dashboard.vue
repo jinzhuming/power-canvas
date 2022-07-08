@@ -2,12 +2,12 @@
 import Canvas from '../components/Canvas.vue';
 import Thumb from '../components/thumb/index.vue';
 import { useMoveCanvas } from '../hooks/useMoveCanvas';
-import { onMounted, ref } from 'vue';
+import { onMounted, Ref, ref, toRefs } from 'vue';
 import { useZoomCanvas } from '../hooks/useZoomCanvas';
 import { usePanelsStore } from '../stores/panels';
 import { v4 as uuid } from 'uuid';
 import MultipleSelectPanels from '../components/MultipleSelectBox.vue';
-import { useDashboardID } from '../stores/dashboard';
+import { useCanvasZoomStore, useDashboardID } from '../stores/dashboard';
 const dashboardRef = ref<HTMLDivElement | null>(null);
 
 const dashboardID = useDashboardID();
@@ -36,6 +36,9 @@ const panelAdd = () => {
 const panelClear = () => {
   panelsStore.clear();
 };
+
+const canvasZoomStore = useCanvasZoomStore();
+const { zoom }: { zoom: Ref<number> } = toRefs(canvasZoomStore);
 </script>
 
 <template>
@@ -47,6 +50,7 @@ const panelClear = () => {
     <Canvas />
     <MultipleSelectPanels />
     <Thumb />
+    <div id="zoom">当前缩放：{{ zoom.toFixed(2) }}</div>
   </div>
 </template>
 
@@ -63,5 +67,12 @@ const panelClear = () => {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+#zoom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 14px;
 }
 </style>

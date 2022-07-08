@@ -12,10 +12,11 @@ import SelectedBox from './SelectedBox.vue';
 const canvasID = useCanvasID();
 const canvasOffsetStore = useCanvasOffsetStore();
 const canvasZoomStore = useCanvasZoomStore();
+const { zoom } = toRefs(canvasZoomStore);
 const { x, y } = toRefs(canvasOffsetStore);
 const canvasStyle = computed(() => {
   return {
-    transform: `translate3d(${x.value}px, ${y.value}px, 0px) scale(${canvasZoomStore.zoom})`
+    transform: `translate3d(${x.value}px, ${y.value}px, 0px) scale(${zoom.value})`
   };
 });
 </script>
@@ -29,7 +30,7 @@ const canvasStyle = computed(() => {
 
 <style>
 #canvas {
-  transform-origin: 0px 0px;
+  transform-origin: 0 0;
   width: 1200px;
   height: 800px;
   background-color: gray;
