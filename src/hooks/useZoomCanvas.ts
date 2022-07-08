@@ -14,10 +14,12 @@ export const useZoomCanvas = (dashboardRef: Ref<HTMLDivElement | null>) => {
   const canvasOffsetStore = useCanvasOffsetStore();
   const canvasZoomStore = useCanvasZoomStore();
 
-  const onWheel = throttle((e: WheelEvent) => {
+  const onWheel = (e: WheelEvent) => {
     const zoomSpeed = 2;
     // 不处理按下 ctrl 和 cmd 的情况
     if (!e.ctrlKey && !e.metaKey) return;
+
+    e.preventDefault();
 
     /*
      * 计算缩放点，比较麻烦，因为可能鼠标会移动到其他元素，clientX 参照系就变了
@@ -59,7 +61,7 @@ export const useZoomCanvas = (dashboardRef: Ref<HTMLDivElement | null>) => {
 
     canvasZoomStore.set(newZoom);
     canvasOffsetStore.set({ x, y });
-  }, 20);
+  };
 
   dom.addEventListener('wheel', onWheel);
 };
