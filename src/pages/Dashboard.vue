@@ -4,13 +4,16 @@ import Thumb from '../components/thumb/index.vue';
 import { useMoveCanvas } from '../hooks/useMoveCanvas';
 import { onMounted, Ref, ref, toRefs } from 'vue';
 import { useZoomCanvas } from '../hooks/useZoomCanvas';
-import { usePanelsStore } from '../stores/panels';
+import { usePanelsStore, useSelectedPanelsStore } from '../stores/panels';
 import { v4 as uuid } from 'uuid';
 import MultipleSelectPanels from '../components/MultipleSelectBox.vue';
 import { useCanvasZoomStore, useDashboardID } from '../stores/dashboard';
+import { useClick } from '../hooks/useClick';
+
 const dashboardRef = ref<HTMLDivElement | null>(null);
 
 const dashboardID = useDashboardID();
+const selectedPanelsStore = useSelectedPanelsStore();
 onMounted(() => {
   useMoveCanvas(dashboardRef);
   useZoomCanvas(dashboardRef);
@@ -39,6 +42,17 @@ const panelClear = () => {
 
 const canvasZoomStore = useCanvasZoomStore();
 const { zoom }: { zoom: Ref<number> } = toRefs(canvasZoomStore);
+
+onMounted(() => {
+  const dom = dashboardRef.value;
+  if (!dom) return;
+  useClick(dom, (e) => {
+    if (e.target === e.currentTarget) {
+      // 点击画布就取消选中，这里注意只识别自身的点击
+      selectedPanelsStore.set([]);
+    }
+  });
+});
 </script>
 
 <template>

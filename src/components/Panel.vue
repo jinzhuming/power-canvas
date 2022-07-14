@@ -5,6 +5,7 @@ import { onMounted, watch, ref, Ref, toRefs, watchEffect } from 'vue';
 import { useMovePanel } from '../hooks/useMovePanel';
 import { debounce } from 'lodash';
 import { useChart } from '../hooks/useChart';
+import { useClick } from '../hooks/useClick';
 
 const props = defineProps<{ panel: IPanel }>();
 const { panel } = toRefs(props);
@@ -49,31 +50,12 @@ onMounted(() => {
   useMovePanel(panel.value.id, dom);
 });
 
-const mousePosition: { x: number | null; y: number | null } = {
-  x: null,
-  y: null
-};
-
-const onMouseDown = (e: MouseEvent) => {
-  mousePosition.x = e.x;
-  mousePosition.y = e.y;
-};
-
-const onMouseUp = (e: MouseEvent) => {
-  if (mousePosition.x === null || mousePosition.y === null) return;
-
-  // up 的时候判断一下和 down 的位置偏移，太大就不是点击是移动
-  if (
-    Math.abs(e.x - mousePosition.x) < 5 &&
-    Math.abs(e.x - mousePosition.x) < 5
-  ) {
-    selectPanel(e);
-  }
-};
-
 onMounted(() => {
   const dom = panelDomRef.value;
   if (!dom) return;
+  useClick(dom, (e) => {
+    selectPanel(e);
+  });
 
   const chartRef = useChart(dom);
   const reRender = debounce(() => {
