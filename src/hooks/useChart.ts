@@ -1,4 +1,5 @@
-import DataSet from '@antv/data-set';
+// @ts-ignore
+import DataSet from '@antv/data-set/build/data-set.js';
 import { Chart } from '@antv/g2';
 import { ref } from 'vue';
 import data from '../../public/demo.json';
@@ -27,7 +28,7 @@ export const useChart = (dom: HTMLDivElement) => {
   const dv1 = ds.createView().source(data);
   dv1.transform({
     type: 'map',
-    callback: (row) => {
+    callback: (row: any) => {
       if (typeof row.Deaths === 'string') {
         row.Deaths = row.Deaths.replace(',', '');
       }
