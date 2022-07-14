@@ -47,6 +47,9 @@ export const useSelectedPanelsStore = defineStore('selectedPanels', {
     enabled: true
   },
   actions: {
+    clear() {
+      this.panelsID = [];
+    },
     set(panels: IPanel[]) {
       // 保存也存 id
       this.panelsID = panels.map((panel) => panel.id);
