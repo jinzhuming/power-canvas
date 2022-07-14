@@ -6,7 +6,6 @@ import {
 } from '../stores/panels';
 import {
   useCanvasID,
-  useCanvasOffsetStore,
   useCanvasZoomStore,
   useDashboardID
 } from '../stores/dashboard';
@@ -29,8 +28,6 @@ export const useMultipleSelectBox = () => {
     y1: 0,
     visibility: false
   });
-  const canvasOffsetStore = useCanvasOffsetStore();
-  const { x, y } = toRefs(canvasOffsetStore);
   const panelsStore = usePanelsStore();
   const { panels } = toRefs(panelsStore);
   const canvasZoomStore = useCanvasZoomStore();

@@ -9,6 +9,7 @@ import { v4 as uuid } from 'uuid';
 import MultipleSelectPanels from '../components/MultipleSelectBox.vue';
 import { useCanvasZoomStore, useDashboardID } from '../stores/dashboard';
 import { useClick } from '../hooks/useClick';
+import { useDeletePanels } from '../hooks/keymaster/useDeletePanels';
 
 const dashboardRef = ref<HTMLDivElement | null>(null);
 
@@ -53,6 +54,9 @@ onMounted(() => {
     }
   });
 });
+
+// 这里是用上的一些插件
+useDeletePanels();
 </script>
 
 <template>

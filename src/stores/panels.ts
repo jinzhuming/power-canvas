@@ -18,8 +18,14 @@ export const usePanelsStore = defineStore('panels', {
     enabled: true
   },
   actions: {
-    clear() {
-      this.panels = [];
+    clear(panelIDs?: string[]) {
+      if (!panelIDs) {
+        this.panels = [];
+      } else {
+        this.panels = this.panels.filter(
+          (panel) => !panelIDs.includes(panel.id)
+        );
+      }
     },
     set(panels: IPanel[]) {
       this.panels = panels;
