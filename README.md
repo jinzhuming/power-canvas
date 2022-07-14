@@ -6,11 +6,10 @@
 项目起源于之前的一个公司低代码数据可视化项目， 后来打算看一下 vue3 的时候发现没什么适合的练手项目，所以就把之前的低代码项目使用 `vue3` 改写一个低配版本出来
 ![](docs/images/sample_diagram.gif)
 
-整体使用 `ts` + `vue3` + `vue-router` + `pinia`
+整体使用 `ts` + `vue3` + `vue-router` + `pinia` + 简单使用 `prettier` 做一些格式化需求即可
 
-因为个人项目比较清楚知道自己在写什么，所以没有使用 `eslint`，简单使用 `prettier` 做一些格式化需求即可
-
-
+### 在线演示
+[Example](https://jinzhuming.github.io/power-canvas/#/)
 
 ### 原理示意图
 ![](docs/images/schematic_diagram.png)
