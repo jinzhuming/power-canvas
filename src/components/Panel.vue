@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // 这里主要是存放在画布中的各个元素，比如地图、可视化图表、图片、视频等等
 import { IPanel, useSelectedPanelsStore } from '../stores/panels';
-import { onMounted, watch, ref, Ref, toRefs, watchEffect } from 'vue';
+import { onMounted, watch, ref, Ref, toRefs } from 'vue';
 import { useMovePanel } from '../hooks/useMovePanel';
 import { debounce } from 'lodash';
 import { useChart } from '../hooks/useChart';
@@ -74,8 +74,6 @@ onMounted(() => {
 <template>
   <div
     ref="panelDomRef"
-    @mousedown="onMouseDown"
-    @mouseup="onMouseUp"
     class="panel"
     :style="{
       width: `${panel.width}px`,
