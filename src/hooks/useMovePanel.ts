@@ -57,7 +57,8 @@ export const useMovePanel = (panelID: string, panelDom: HTMLDivElement) => {
       panels.value.map((panel) => {
         if (
           panel.id === panelID ||
-          (isInMultipleSelected && selectedPanelIDs.value.includes(panel.id))
+          (isInMultipleSelected.value &&
+            selectedPanelIDs.value.includes(panel.id))
         ) {
           return {
             ...panel,
@@ -76,6 +77,8 @@ export const useMovePanel = (panelID: string, panelDom: HTMLDivElement) => {
   };
 
   const onMouseDown = (e: MouseEvent) => {
+    // 只识别左键按下
+    if (e.button !== 0) return;
     // 不处理按下 ctrl 和 cmd 的情况
     if (e.ctrlKey || e.metaKey) return;
     window.addEventListener('mouseup', onMouseUp);

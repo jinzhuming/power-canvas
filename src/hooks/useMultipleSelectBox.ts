@@ -76,6 +76,8 @@ export const useMultipleSelectBox = () => {
   const onMouseDown = (e: MouseEvent) => {
     // 不处理按下 ctrl 和 cmd 的情况
     if (e.ctrlKey || e.metaKey) return;
+    // 只识别左键按下
+    if (e.button !== 0) return;
     const canvasDom = document.querySelector(`#${canvasID}`);
     const dashboardDom = document.querySelector(`#${dashboardID}`);
     // 只允许指定的几个 dom 可以做框选，点击在其他dom不做处理

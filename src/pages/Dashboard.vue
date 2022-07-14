@@ -17,7 +17,7 @@ onMounted(() => {
 });
 
 function getRandom() {
-  return Math.floor(Math.random() * 2000) * (Math.round(Math.random()) * 2 - 1);
+  return Math.floor(Math.random() * 500) * (Math.round(Math.random()) * 2 - 1);
 }
 
 const panelsStore = usePanelsStore();

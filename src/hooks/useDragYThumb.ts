@@ -36,6 +36,8 @@ export const useDragYThumb = (
    * 监听滑块按下
    * */
   const onMouseDown = (e: MouseEvent) => {
+    // 只识别左键按下
+    if (e.button !== 0) return;
     e.preventDefault();
     // 通过和当前滑块的位置和按下的位置计算得到一个差值，后面鼠标移动的时候减去这个差值就可以得到滑块所处的位置
     offsetY = thumbTransformY.value - e.clientY;

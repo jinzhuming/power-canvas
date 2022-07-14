@@ -16,7 +16,7 @@ const style = computed(() => ({
   <div id="multiple_select_panels" :style="style"></div>
 </template>
 
-<style>
+<style lang="scss">
 #multiple_select_panels {
   z-index: 3;
   position: absolute;
