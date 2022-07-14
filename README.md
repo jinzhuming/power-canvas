@@ -1,4 +1,7 @@
-# Vue 3 + TypeScript + Vite + Pinia
+# Power-canvas
+ Vue 3 + TypeScript + Vite + Pinia
+
+[![OSCS Status](https://www.oscs1024.com/platform/badge/jinzhuming/power-canvas.svg?size=small)](https://www.oscs1024.com/project/jinzhuming/power-canvas?ref=badge_small)
 
 项目起源于之前的一个公司低代码数据可视化项目， 后来打算看一下 vue3 的时候发现没什么适合的练手项目，所以就把之前的低代码项目使用 `vue3` 改写一个低配版本出来
 ![](docs/images/sample_diagram.gif)
@@ -50,3 +53,17 @@
 ### 启动项目
 yarn run dev 开发
 yarn run build 打包
+
+### 功能介绍
+目前支持的功能有
+1. 选择图形
+2. 移动图形
+3. 缩放图形
+4. 多选图形
+5. 鼠标框选图形
+6. 框选图形后的缩放
+7. 框选图形后的移动
+8. 删除图形
+9. 缩放画布
+10. 移动画布
+11. 画布无限滚动
