@@ -82,6 +82,7 @@ onMounted(() => {
       height: `${panel.height}px`,
       left: `${panel.x}px`,
       top: `${panel.y}px`,
+      overflow: 'hidden',
       background: '#F8F9FC'
     }"
   ></div>
